@@ -16,7 +16,7 @@ public class SimpleProceduralMesh : MonoBehaviour
     {
         mesh = new Mesh();
         mesh.name = "Procedural Mesh";
-        SetVertices ();
+        GetComponent<MeshFilter>().sharedMesh = mesh;
     }
     void SetVertices ()
     {
@@ -27,7 +27,8 @@ public class SimpleProceduralMesh : MonoBehaviour
     }
     void Update ()
     {
-
+        mesh.Clear();
+        
         if(finalPos.Count != positions.Length)
         {
           SetVertices ();
@@ -43,7 +44,6 @@ public class SimpleProceduralMesh : MonoBehaviour
         mesh.SetVertices ( finalPos );
         mesh.triangles = faces;
     
-    GetComponent<MeshFilter>().sharedMesh = mesh;
 
     }
 
